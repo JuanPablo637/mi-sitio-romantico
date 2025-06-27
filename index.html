@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicol Castillo 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffd3e3, #fce4ec);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .heart {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #e91e63;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #880e4f;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .gif {
+      width: 150px;
+      height: auto;
+      animation: bounce 2s infinite ease-in-out;
+      margin-bottom: 20px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s;
+      color: #fff;
+    }
+
+    .btn-si {
+      background-color: #ec407a;
+    }
+
+    .btn-si:hover {
+      background-color: #d81b60;
+    }
+
+    .btn-no {
+      background-color: #6a1b9a;
+    }
+
+    .btn-no:hover {
+      background-color: #4a148c;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #4a148c;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .message.disabled {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #d32f2f;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-family: 'Arial', sans-serif !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">💖</div>
+  <h1>Hola Nicol Castillo</h1>
+  <h1><h1>No soy poeta, y tú no eres escritora…<br>pero desde que te vi, nuestras miradas comenzaron a escribir algo bonito,<br>algo que quiero seguir construyendo contigo.</h1></h1>
+
+  <img src="dudu.gif" alt="Dudu" class="gif">
+
+  <div class="buttons">
+    <button class="btn btn-si" id="btn-si">Sí</button>
+    <button class="btn btn-no" id="btn-no">No</button>
+  </div>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    let yesScale = 1;
+    let noScale = 1;
+    let frases = [
+      "Pero Nicol... yo te quiero 🥺",
+      "Piensa bien... podría hacerte muy feliz 😘",
+      "No seas tan dura 💔",
+      "Una cita y lo sabrás todo 😌",
+      "Tú sabes que sí quieres 💕",
+      "Dale una oportunidad al amor 😍",
+    ];
+    let fraseIndex = 0;
+
+    document.getElementById('btn-no').addEventListener('click', function() {
+      const messageEl = document.getElementById('message');
+      messageEl.textContent = frases[fraseIndex];
+      messageEl.classList.add('disabled');
+      fraseIndex = (fraseIndex + 1) % frases.length;
+
+      yesScale += 0.1;
+      noScale -= 0.1;
+      document.getElementById('btn-si').style.transform = 'scale(' + yesScale + ')';
+      document.getElementById('btn-no').style.transform = 'scale(' + noScale + ')';
+    });
+
+    document.getElementById('btn-si').addEventListener('click', function() {
+      window.open("celebracion.html", "_blank");
+    });
+  </script>
+
+</body>
+</html>
